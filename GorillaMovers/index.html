@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="https://www.gorillamovers.com/wp-content/uploads/2022/04/favicon.ico"
+      type="image/x-icon"
+    />
+    <script
+      src="https://kit.fontawesome.com/21508cd58b.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <script type='text/javascript' src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZfcycNElXHZcXODKCqKDS_u1Ref5d-RM&libraries=places"></script>
+    <script src="assets/js/custom.js"></script>
+    <title>Step form</title>
+  </head>
+
+  <body onload="onLoadCalculator()">
+    <div class="form-demo">
+      <!-------------screen-1-intro----------------->
+      <section class="screen-1-intro sec" id="intro">
+        <div class="container">
+          <div class="get-moving-request">
+            <h1>LET'S GET MOVING ON YOUR REQUEST!</h1>
+            <p>
+              We look forward to being the best part of your move! To do that,
+              we'll need to collect and store your information, and we may
+              record phone calls. Anything we collect or record will only be
+              used to coordinate the services you request, ensuring the service
+              you receive meet our high standards, and for training our team.
+              You may request to have this information provided to you or
+              deleted at any time. By checking the box below, you are
+              authorizing TWO MEN AND A TRUCK® to contact you via email, phone,
+              or text message including via automated technology. You may ask us
+              to not use any of these communication types at any time by
+              replying "stop" or "unsubscribe" or by asking your move consultant
+              to update your preferences. View our
+              <a href="#">privacy policy.</a>
+            </p>
+            <p>
+              If you would rather not use our form, that's cool with us. We'd be
+              happy to chat if you give us a call at
+              <a href="#"> 877.720.0411.</a>
+            </p>
+            <label for="terms">
+              <input type="checkbox" name="Terms" id="terms" value="check" />
+              I'm good with that -- let's get started! </label
+            ><br />
+            <p id="termsError" class="error"></p>
+          </div>
+          <div class="progressbar">
+            <input type="range" class="fontController" value="0" />
+          </div>
+          <div class="btn">
+            <button class="next-btn" onclick="introNext()">NEXT ></button>
+          </div>
+        </div>
+      </section>
+      <!----------------screen-2-contact-info----------------->
+      <section class="screen-2-contact-info sec" id="contactInfo">
+        <div class="container" id="contactInfoContainer">
+          <div class="about-yourself">
+            <h1>TELL US A LITTLE ABOUT YOURSELF.</h1>
+            <p>
+              Hello, good to have you with us! Tell us your name and your
+              favorite color, and we'll get started (your favorite color will
+              come in handy if you need to come back to your request later).
+            </p>
+
+            <div class="inp-field">
+              <input
+                type="text"
+                placeholder="First Name"
+                id="firstName"
+                required
+              /><br />
+              <span>*</span>
+            </div>
+            <div class="inp-field">
+              <input
+                type="text"
+                placeholder="Last Name"
+                id="lastName"
+                required
+              /><br />
+              <span>*</span>
+            </div>
+            <div class="inp-field" id="contactInfoEmail">
+              <input
+                type="email"
+                placeholder="Email Address"
+                id="emailAddress"
+                required
+              /><br />
+              <span>*</span>
+              <p class="error-message" id="emailAddressError"></p>
+            </div>
+            <div class="inp-field" id="contactInfoPhone">
+              <input
+                type="tel"
+                placeholder="Phone Number"
+                id="phoneNumber"
+                required
+              /><br />
+              <span>*</span>
+              <p class="error-message" id="phoneNumberError"></p>
+            </div>
+          </div>
+          <p id="contactInfoError" class="error-message"></p>
+          <div class="progressbar">
+            <input type="range" class="fontController" value="10" />
+          </div>
+          <div class="btn">
+            <button class="prev-btn" onclick="openIntro()">< PREVIOUS</button>
+            <span>Up next Email</span>
+            <button class="next-btn" onclick="contactInfoNext()">NEXT ></button>
+          </div>
+        </div>
+      </section>
+      <!--------------screen-4-move-type------------->
+
+      <section class="screen-4-move-type sec" id="moveType">
+        <div class="container">
+          <div class="services srvc-for-business" id="moveTypeService">
+            <h1>ARE THESE SERVICES FOR A HOME OR BUSINESS?</h1>
+            <p>
+              Moving a household is very different than moving a business! This
+              information helps us allocate people and supplies to expertly plan
+              your move.
+            </p>
+            <div class="services-btn" id="radio-buttons-container">
+              <button class="srvc-radio-btn">
+                <input
+                  type="radio"
+                  id="home-btn-1"
+                  name="moveTypeOption"
+                  onChange="handleMoveTypeOptions(1)"
+                />
+                <label for="home-btn-1"><strong>Home</strong></label>
+              </button>
+
+              <button class="srvc-radio-btn">
+                <input
+                  type="radio"
+                  id="business-btn-1"
+                  name="moveTypeOption"
+                  onChange="handleMoveTypeOptions(2)"
+                />
+                <label for="business-btn-1"><strong>Business</strong></label>
+              </button>
+            </div>
+          </div>
+          <p class="error-message" id="moveTypeError"></p>
+          <div class="progressbar">
+            <input type="range" class="fontController" value="20" />
+          </div>
+          <div class="btn">
+            <button class="prev-btn" onclick="openContactInfo()">
+              < PREVIOUS
+            </button>
+            <span>Up next Service Address</span>
+            <button class="next-btn" onclick="moveTypeNext()">NEXT ></button>
+          </div>
+        </div>
+      </section>
+      <!--------------screen-4-Need-us--------------->
+      <section class="screen-4-need-us sec" id="needUsBusiness">
+        <div class="container">
+          <div class="srvc-for-business">
+            <h1>WHERE WILL YOU NEED US?</h1>
+            <p>
+              We'll send our highly trained crew to this address to perform the
+              services you select.
+            </p>
+            <div class="inp-field">
+              <input type="text" id="businessLocation" /><br />
+              <span><i class="fa-solid fa-location-dot"></i></span>
+            </div>
+
+            <span class="error-message" id="errorNeedUsBusiness"></span>
+            <h2>WHAT TYPE OF BUILDING IS THIS</h2>
+            <div class="business-types">
+              <div class="col">
+                <div class="form-group types-name">
+                  <input
+                    type="radio"
+                    id="office"
+                    name="businessTypesOption"
+                    onchange="pickupBusinessTypeOption('Office')"
+                  />
+                  <label for="office"
+                    ><i class="fa-solid fa-building"></i
+                    ><strong>Office</strong></label
+                  >
+                </div>
+                <div class="form-group types-name">
+                  <input
+                    type="radio"
+                    id="retail"
+                    name="businessTypesOption"
+                    onchange="pickupBusinessTypeOption('Retail')"
+                  />
+                  <label for="retail"
+                    ><i class="fa-solid fa-shop"></i
+                    ><strong>Retail</strong></label
+                  >
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group types-name types-name-col-2">
+                  <input
+                    type="radio"
+                    id="warehouse"
+                    name="businessTypesOption"
+                    onchange="pickupBusinessTypeOption('Warehouse')"
+                  />
+                  <label for="warehouse"
+                    ><i class="fa-solid fa-warehouse"></i
+                    ><strong>Warehouse</strong></label
+                  >
+                </div>
+                <div class="form-group types-name">
+                  <input
+                    type="radio"
+                    id="storage"
+                    name="businessTypesOption"
+                    onchange="pickupBusinessTypeOption('Storage')"
+                  />
+                  <label for="storage"
+                    ><i class="fa-solid fa-database"></i
+                    ><strong>Storage</strong></label
+                  >
+                </div>
+              </div>
+            </div>
+            <p class="error-message" id="errorBusinessType"></p>
+          </div>
+
+          <div class="progressbar">
+            <input type="range" class="fontController" value="30" />
+          </div>
+          <div class="btn">
+            <button class="prev-btn" onclick="openMoveType(2)">
+              < PREVIOUS
+            </button>
+            <span>Up next Service Address</span>
+            <button class="next-btn" onclick="needUsBusinessNext()">
+              NEXT >
+            </button>
+          </div>
+        </div>
+      </section>
+      <!--------------screen-4-business-space--------------->
+      <section class="screen-4-business-space screens sec" id="businessSpace">
+        <div class="container">
+          <div class="srvc-for-business">
+            <h1>How Big IS Your Space?</h1>
+            <p>
+              You may not know this off the top of your head (and that's ok!).
+              Having your exact square footage will allow us to give you a much
+              more accurate estimate.
+            </p>
+            <div class="inp-field">
+              <input
+                type="number"
+                placeholder="3000 SQ FT"
+                id="squarefeet"
+              /><br />
+            </div>
+            <p class="error-message" id="businessSpaceAreaError"></p>
+            <div id="proof">
+              <input
+                class="cl-custom-check"
+                id="checkSquareFeet"
+                type="checkbox"
+                onchange="squareFeetCheck()"
+              />
+              <label
+                class="cl-custom-check-label"
+                for="checkSquareFeet"
+                title="Click for select/unselect"
+                >I don't know my square feet</label
+              >
+            </div>
+            <h2>how many employees are being moved</h2>
+
+            <div class="inp-field">
+              <input
+                type="number"
+                placeholder="Employees Bieng Moved"
+                id="employeesMoved"
+              /><br />
+              <span>*</span>
+            </div>
+            <p class="error-message" id="businessSpaceError"></p>
+          </div>
+          <div class="progressbar">
+            <input type="range" class="fontController" value="30" />
+          </div>
+          <div class="btn">
+            <button class="prev-btn" onclick="openNeedUsBusiness()">
+               PREVIOUS
+            </button>
+            <span>Up next Service Address</span>
+            <button class="next-btn" onclick="businessSpaceNext()">
+              NEXT >
+            </button>
+          </div>
+        </div>
+      </section>
+      <!--------------screen-4-business-cubicals--------------->
+      <section
+        class="screen-4-business-cubicals screens sec"
+        id="businessCubicals"
+      >
+        <div class="container">
+          <div class="srvc-for-business">
+            <h1>Do You Need To Move Any Cubicals</h1>
+            <div class="services-btn">
+              <button
+                class="srvc-btn srvc-btn-cubicals"
+                onclick="handleCubicals('Yes',this)"
+              >
+                <i class="fa-solid fa-check"></i> Yes
+              </button>
+              <button
+                class="srvc-btn srvc-btn-cubicals"
+                onclick="handleCubicals('No',this)"
+              >
+                <i class="fa-solid fa-xmark"></i> No
+              </button>
+            </div>
+            
+            <h2>Do You Have Any Heavy Items</h2>
+            <div class="services-btn">
+              <button
+                class="srvc-btn srvc-btn-heavy-items"
+                onclick="handleHeavyItems('Yes',this)"
+              >
+                <i class="fa-solid fa-check"></i> Yes
+              </button>
+              <button
+                class="srvc-btn srvc-btn-heavy-items" 
+                onclick="handleHeavyItems('No',this)"
+              >
+                <i class="fa-solid fa-xmark"></i> No
+              </button>
+            </div>
+            <p class="error-message" id="businessCubicalItemsError"></p>
+          </div>
+          <div class="progressbar">
+            <input type="range" class="fontController" value="30" />
+          </div>
+          <div class="btn">
+            <button class="prev-btn" onclick="openBusinessSpace()">
+              < PREVIOUS
+            </button>
+            <span>Up next Service Address</span>
+            <button class="next-btn" onclick="businessCubicalNext()">
+              NEXT >
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!--------------screen-5-apartment-types--------------->
+      <section class="screen-5-apartment-types apartment sec" id="moveTypeHome">
+        <div class="container screen-cnt">
+          <div class="apartment-wrap" id="moveTypeHomeService">
+            <div class="srvc-for-business">
+              <h1>starting Address</h1>
+
+              <div class="inp-field">
+                <input
+                  type="text"
+                  id="homeAddress"
+                  placeholder="Enter Address"
+                />
+                <span><i class="fa-solid fa-location-dot"></i></span>
+                <p id="homeAddressError" class="error"></p>
+              </div>
+
+            
+              <h2>Do you have a unit number or letter ?</h2>
+              <div class="inp-field">
+                <input
+                  type="text"
+                  id="unitNumberLetter"
+                  placeholder="Unit Number / Letter"
+                />
+                <span>*</span>
+                <p id="homeAddressError2" class="error"></p>
+              </div>
+
+              <h2>WHAT TYPE OF BUILDING IS THIS</h2>
+            </div>
+
+            <div class="business-types">
+              <div class="col">
+                <div class="form-group types-name">
+                  <input
+                    type="radio"
+                    id="home"
+                    name="buildingsTypes"
+                    onchange="homeTypeOptions('Home')"
+                  />
+                  <label for="home"
+                    ><i class="fa-solid fa-house"></i><strong>Home</strong>
+                  </label>
+                </div>
+                <div class="form-group types-name">
+                  <input
+                    type="radio"
+                    id="apartment"
+                    name="buildingsTypes"
+                    onchange="homeTypeOptions('Apartment')"
+                  />
+                  <label for="apartment"
+                    ><i class="fa-solid fa-building"></i
+                    ><strong>Apartment</strong></label
+                  >
+                </div>
+                
+              </div>
+              
+              <div class="col">
+                <div class="form-group types-name types-name-col-2">
+                  <input
+                    type="radio"
+                    id="condo"
+                    name="buildingsTypes"
+                    onchange="homeTypeOptions('Condo')"
+                  />
+                  <label for="condo"
+                    ><i class="fa-solid fa-city"></i
+                    ><strong>Condo</strong></label
+                  >
+                </div>
+                <div class="form-group types-name">
+                  <input
+                    type="radio"
+                    id="space"
+                    name="buildingsTypes"
+                    onchange="homeTypeOptions('Storage')"
+                  />
+                  <label for="space"
+                    ><i class="fa-solid fa-database"></i
+                    ><strong>Storage</strong></label
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="error" id="errorAppartement"></p>
+          <div class="progressbar">
+            <input type="range" class="fontController" value="30" />
+          </div>
+          <div class="btn">
+            <button class="prev-btn" onclick="openMoveType(1)">
+              < PREVIOUS
+            </button>
+            <span>Up next Service Address</span>
+            <button class="next-btn" onclick="moveTypeHomeNext()">
+              NEXT >
+            </button>
+          </div>
+        </div>
+        
+      </section>
+      <!--------------screen-5-heavy-items-------------->
+      <section class="screen-5-heavy-items screens sec" id="homeHeavyItems">
+        <div class="container">
+          <div class="srvc-for-business">
+            <h1>Do you have any heavy items</h1>
+            
+            <div id="heavyItemsOptions">
+              <div class="services-btn" >
+                <button
+                  class="srvc-btn srvc-btn-home-items"
+                  onclick="handleHeavyItemsOptions('Yes',this)"
+                >
+                  <i class="fa-solid fa-check"></i> Yes
+                </button>
+                <button
+                  class="srvc-btn srvc-btn-home-items"
+                  onclick="handleHeavyItemsOptions('No',this)"
+                >
+                  <i class="fa-solid fa-xmark"></i> No
+                </button>
+              </div>
+            </div>
+
+            <h2>Do you need any dis/reassembly of any furniture</h2>
+
+            <div id="reassemblyOptions">
+              <div class="services-btn">
+                <button
+                  class="srvc-btn srvc-btn-home-reassembly"
+                  onclick="handleReassemblyOptions('Yes',this)"
+                >
+                  <i class="fa-solid fa-check"></i> Yes
+                </button>
+                <button
+                  class="srvc-btn srvc-btn-home-reassembly"
+                  onclick="handleReassemblyOptions('No',this)"
+                >
+                  <i class="fa-solid fa-xmark"></i> No
+                </button>
+              </div>
+            </div>
+            <p class="error" id="Heavy-ItemsError"></p>
+          </div>
+
+          <div class="progressbar">
+            <input type="range" class="fontController" value="30" />
+          </div>
+          <div class="btn">
+            <button class="prev-btn" onclick="openMoveTypeHome()">
+              < PREVIOUS
+            </button>
+            <span>Up next Service Address</span>
+            <button class="next-btn" onclick="homeHeavyItemsNext()">
+              NEXT >
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!--------------screen-6-Services--------------->
+      <section class="screen-6-services apartment sec" id="howCanWeHelp">
+        <div class="container screen-cnt">
+          <div class="apartment-wrap">
+            <div class="srvc-for-business">
+              <h2>How can we help you ?</h2>
+              <p>
+                We offer a variety of services to give you the best experience
+                possible Which of the following services are you asking about
+                today?
+              </p>
+            </div>
+
+            <div class="business-types">
+              <div class="col">
+                <div class="form-group types-name">
+                  <input type="radio" name="movingServiceType" id="localmove" />
+                  <label for="localmove"
+                    ><i class="fa-solid fa-house"></i
+                    ><strong>Local Move</strong></label
+                  >
+                </div>
+                <div class="form-group types-name">
+                  <input
+                    type="checkbox"
+                    name="movingServiceType"
+                    id="packingservice"
+                  />
+                  <label for="packingservice"
+                    ><i class="fa-solid fa-building"></i
+                    ><strong>Packing Services</strong></label
+                  >
+                </div>
+                <div class="form-group types-name">
+                  <input
+                    type="checkbox"
+                    name="movingServiceType"
+                    id="supplies"
+                  />
+                  <label for="supplies"
+                    ><i class="fa-solid fa-building"></i
+                    ><strong>Supplies</strong></label
+                  >
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group types-name types-name-col-2">
+                  <input
+                    type="radio"
+                    name="movingServiceType"
+                    id="inhousemove"
+                  />
+                  <label for="inhousemove"
+                    ><i class="fa-solid fa-city"></i
+                    ><strong>In House Move</strong></label
+                  >
+                </div>
+                <div class="form-group types-name">
+                  <input
+                    type="radio"
+                    name="movingServiceType"
+                    id="longdistancemove"
+                  />
+                  <label for="longdistancemove"
+                    ><i class="fa-solid fa-people-arrows"></i
+                    ><strong>Long Distance Move</strong></label
+                  >
+                </div>
+                <div class="form-group types-name">
+                  <input type="checkbox" name="movingServiceType" id="junkremoval" />
+                  <label for="junkremoval"
+                    ><i class="fa-solid fa-city"></i
+                    ><strong>Junk Removal</strong></label
+                  >
+                </div>
+                <div class="form-group types-name">
+                  <input type="checkbox" name="movingServiceType" id="needstorageservice" />
+                  <label for="needstorageservice"
+                    ><i class="fa-solid fa-database"></i
+                    ><strong>I need Storage Service</strong></label
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- <p>*Unavailable at current location</p> -->
+          </div>
+
+          <div class="progressbar">
+            <input type="range" class="fontController" value="40" />
+          </div>
+          <div class="btn">
+            <button class="prev-btn" onclick="howCanWeHelpPrev()">
+              < PREVIOUS
+            </button>
+            <span>Up next Square Feet</span>
+            <button class="next-btn" onclick="howCanWeHelpNext()">
+              NEXT >
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!--------------screen-7-how can we help you--------------->
+      <section class="screen-7-date-select apartment sec" id="needUsCalender">
+        <div class="container screen-cnt">
+          <div class="apartment-wrap">
+            <div class="srvc-for-business">
+              <h2>When Will you need us?</h2>
+              <p>
+                We require a minimum of your postal code to provide an estimate.
+              </p>
+
+              <p>Preferrd Service Date</p>
+              <input
+                type="date"
+                id="pickupCalender"
+                placeholder="MM/DD/YYYY"
+                min=""
+                onclick="validateDate()"
+              /><br />
+              <p style="font-size: 14px; margin-top: 20px">
+                Format: MM/DD/YYYY
+              </p>
+              <p id="DateError" class="error"></p>
+            </div>
+          </div>
+          <div class="progressbar">
+            <input type="range" class="fontController" value="50" />
+          </div>
+          <div class="btn">
+            <button class="prev-btn" onclick="openHowCanWeHelp()">
+              < PREVIOUS
+            </button>
+            <span>Up next: To Address</span>
+            <button class="next-btn" onclick="dateNext()">NEXT ></button>
+          </div>
+        </div>
+      </section>
+
+      <!--------------screen-8-home-destination--------------->
+      <section
+        class="screen-8-home-destination apartment sec"
+        id="homeDestination"
+      >
+        <div class="container screen-cnt">
+          <div class="apartment-wrap">
+            <div class="srvc-for-business">
+              <h1>What is the destination for your belongings ?</h1>
+              <p>
+                We require a minimum of your postal code to provide an estimate.
+              </p>
+              
+              <div class="inp-field">
+                <input
+                  type="text"
+                  id="homeDestinationLocation"
+                  placeholder="Enter Address"
+                />
+                <span><i class="fa-solid fa-location-dot"></i></span>
+              </div>
+
+              <p class="error" id="homeDestinationError"></p>
+
+           
+              <h2>WHAT TYPE OF BUILDING IS THIS</h2>
+            </div>
+
+            <div class="business-types">
+              <div class="col">
+                <div class="form-group types-name">
+                  <input
+                    type="radio"
+                    name="destination-home-type"
+                    id="home-2"
+                    onchange="dropOffHomeTypeOption('Home')"
+                  />
+                  <label for="home-2"
+                    ><i class="fa-solid fa-house"></i><strong>Home</strong>
+                  </label>
+                </div>
+                <div class="form-group types-name">
+                  <input
+                    type="radio"
+                    name="destination-home-type"
+                    id="apartment-2"
+                    onchange="dropOffHomeTypeOption('Apartment')"
+                  />
+                  <label for="apartment-2"
+                    ><i class="fa-solid fa-building"></i
+                    ><strong>Apartment</strong></label
+                  >
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group types-name types-name-col-2">
+                  <input
+                    type="radio"
+                    name="destination-home-type"
+                    id="condo-2"
+                    onchange="dropOffHomeTypeOption('Condo')"
+                  />
+                  <label for="condo-2"
+                    ><i class="fa-solid fa-city"></i
+                    ><strong>Condo</strong></label
+                  >
+                </div>
+                <div class="form-group types-name">
+                  <input
+                    type="radio"
+                    name="destination-home-type"
+                    id="storage-2"
+                    onchange="dropOffHomeTypeOption('Storage')"
+                  />
+                  <label for="storage-2"
+                    ><i class="fa-solid fa-database"></i
+                    ><strong>Storage</strong></label
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="progressbar">
+            <input type="range" class="fontController" value="60" />
+          </div>
+          <div class="btn">
+            <button class="prev-btn" onclick="openCalender()">
+              < PREVIOUS
+            </button>
+            <span>Up next: Additional Stops</span>
+            <button class="next-btn" onclick="homeDestinationNext()">
+              NEXT >
+            </button>
+          </div>
+        </div>
+      </section>
+      <!--------------screen-8-business-destination--------------->
+      <section
+        class="screen-8-business-destination apartment sec"
+        id="businessDestination"
+      >
+        <div class="container screen-cnt">
+          <div class="apartment-wrap">
+            <div class="srvc-for-business">
+              <h1>What is the destination for your belongings ?</h1>
+            
+             
+
+
+              <div class="inp-field">
+                <input
+                  type="text"
+                  id="businessDestinationLocation"
+                  placeholder="Enter Address"
+                />
+
+                <span><i class="fa-solid fa-location-dot"></i></span>
+                <p class="error" id="business-destinationError"></p>
+              </div>
+
+            
+
+              <p class="error-message" id="business-destinationError"></p>
+              <h2>WHAT TYPE OF BUILDING IS THIS</h2>
+            </div>
+
+            <div class="business-types">
+              <div class="col">
+                <div class="form-group types-name">
+                  <input
+                    type="radio"
+                    id="office-2"
+                    name="destination-business-type"
+                    onchange="dropOffBusinessTypeOption('Office')"
+                  />
+                  <label for="office-2"
+                    ><i class="fa-solid fa-building"></i
+                    ><strong>Office</strong></label
+                  >
+                </div>
+                <div class="form-group types-name">
+                  <input
+                    type="radio"
+                    id="retail-2"
+                    name="destination-business-type"
+                    onchange="dropOffBusinessTypeOption('Retail')"
+                  />
+                  <label for="retail-2"
+                    ><i class="fa-solid fa-shop"></i
+                    ><strong>Retail</strong></label
+                  >
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group types-name types-name-col-2">
+                  <input
+                    type="radio"
+                    id="warehouse-2"
+                    name="destination-business-type"
+                    onchange="dropOffBusinessTypeOption('Warehouse')"
+                  />
+                  <label for="warehouse-2"
+                    ><i class="fa-solid fa-warehouse"></i
+                    ><strong>Warehouse</strong></label
+                  >
+                </div>
+                <div class="form-group types-name">
+                  <input
+                    type="radio"
+                    id="storage-2b"
+                    name="destination-business-type"
+                    onchange="dropOffBusinessTypeOption('Storage')"
+                  />
+                  <label for="storage-2b"
+                    ><i class="fa-solid fa-database"></i
+                    ><strong>Storage</strong></label
+                  >
+                </div>
+              </div>
+            </div>
+           <p class="error" id="businessTypeError"></p>
+          </div>
+        
+
+          <div class="progressbar">
+            <input type="range" class="fontController" value="60" />
+          </div>
+          <div class="btn">
+            <button class="prev-btn" onclick="openCalender()">
+              < PREVIOUS
+            </button>
+            <span>Up next: Additional Stops</span>
+            <button class="next-btn" onclick="businessDestinationNext()">
+              NEXT >
+            </button>
+          </div>
+        </div>
+      </section>
+      <!--------------screen-9-pickUp-dropOf--------------->
+      <section class="screen-9-pickUp-dropOf screens sec" id="additionalStops">
+        <div class="container">
+          <div class="srvc-for-business">
+            <h1>Do you have stop to make along the way?</h1>
+            <p>
+              Moving a household is very different than moving a business! This
+              information helps us allocate people and supplies to expertly plan
+              your move.
+            </p>
+
+            <div class="services-btn">
+              <button
+                class="srvc-btn srvc-btn-additional-stops"
+                id="additionalStopYes"
+                onclick="handleAdditionalStopsOptions('Yes',this)"
+              >
+                <i class="fa-solid fa-check"></i> Yes
+              </button>
+              <button
+                class="srvc-btn srvc-btn-additional-stops"
+                id="additionalStopNo"
+                onclick="handleAdditionalStopsOptions('No',this)"
+              >
+                <i class="fa-solid fa-xmark"></i> No
+              </button>
+            </div>
+            <p class="error" id="PickupError"></p>
+          </div>
+
+          <div class="progressbar">
+            <input type="range" class="fontController" value="70" />
+          </div>
+          <div class="btn">
+            <button class="prev-btn" onclick="destination()">< PREVIOUS</button>
+            <span>Up next Concems</span>
+            <button class="next-btn" onclick="additionalStopsNext()">
+              NEXT >
+            </button>
+          </div>
+        </div>
+      </section>
+      <!--------------screen-10-review ---------------->
+      <section class="screen-10-review screens sec" id="reviewScreen">
+        <div class="container">
+          <div class="srvc-for-business">
+            <h1>Canfirm your move details</h1>
+            <p>
+              Moving a household is very different than moving a business! This
+              information helps us allocate people and supplies to expertly plan
+              your move.
+            </p>
+
+            <div class="rm-wrap">
+              <div class="rm-item">
+                <div class="first-sec" id="formDataDisplay">
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="progressbar">
+            <input type="range" class="fontController" value="80" />
+          </div>
+          <div class="btn">
+            <button class="prev-btn" onclick="openAdditionalSteps()">
+              < PREVIOUS
+            </button>
+            <span>Up next: Boxes</span>
+            <button class="next-btn" onclick="reviewScreenNext()">
+              NEXT >
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-----------------screen-11-Up-sale-------------------->
+
+      <section
+        class="screen-11-Up-sale apartment packing-supplies sec"
+        id="packingSupplies"
+      >
+        <div class="container screen-cnt">
+          <div class="apartment-wrap" id="packingSuppliesOptions">
+            <div class="srvc-for-business">
+              <h1>In need of Packing supplies</h1>
+            </div>
+
+            <div class="services-btn">
+              <button class="srvc-btn" onclick="showPackingSupplies('Yes')">
+                <i class="fa-solid fa-check"></i> Yes
+              </button>
+              <button class="srvc-btn" onclick="showPackingSupplies('No')">
+                <i class="fa-solid fa-xmark"></i> No
+              </button>
+            </div>
+            <p class="error" id="UpSaleError"></p>
+          </div>
+
+          <div class="progressbar">
+            <input type="range" class="fontController" value="90" />
+          </div>
+          <div class="btn">
+            <button class="prev-btn" onclick="openReviewScreen()">
+              < PREVIOUS
+            </button>
+            <span>Next Step: Finish</span>
+            <button class="next-btn" onclick="packingSuppliesNext()">
+              NEXT >
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-----------------End Screen--------------------->
+      <section class="screen-12-end sec" id="endScreen">
+        <div class="container">
+          <div class="end">
+            <h1>WE'LL GET MOVING ON YOUR QUOTE!</h1>
+            <p>
+              We've got all the information we need to get working on your quote
+              and will contact you once it's ready.
+            </p>
+            <img
+              src="/wp-content/form-demo/assets/images/end.png"
+              width="80%"
+              alt=""
+            />
+
+            <div class="last-para">
+              <p>
+                Get a head start organizing your move with movetrac®. You can
+                track your quote progress, keep track of your moving tasks, and
+                more!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
